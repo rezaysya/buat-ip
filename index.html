@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Island Generator (Clean) for iPhone 11</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body class="bg-slate-900 text-slate-100 min-p-6 flex flex-col items-center justify-center min-h-screen">
+
+    <div class="max-w-md w-full bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700">
+        <h1 class="text-xl font-bold text-center mb-2">Dynamic Island Converter</h1>
+        <p class="text-xs text-slate-400 text-center mb-6">Ubah screenshot iPhone 11 Anda agar memiliki Dynamic Island polos ala iPhone 15 secara instan.</p>
+
+        <!-- Input File -->
+        <div class="mb-4">
+            <label class="block text-sm font-medium mb-2 text-slate-300">Upload Screenshot:</label>
+            <input type="file" id="upload" accept="image/*" class="w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700 cursor-pointer">
+        </div>
+
+        <!-- Preview Area -->
+        <div id="preview-container" class="relative hidden w-full overflow-hidden rounded-[38px] shadow-2xl border-4 border-slate-700 bg-black aspect-[9/19.5] mb-4 flex justify-center">
+            <div id="capture-area" class="relative w-full h-full">
+                <!-- Screenshot Result -->
+                <img id="uploaded-image" class="w-full h-full object-cover" alt="Screenshot">
+                
+                <!-- Dynamic Island Overlay (Kapsul Polos Tanpa Kamera) -->
+                <div class="absolute top-3 left-1/2 transform -translate-x-1/2 bg-black h-[32px] w-[115px] rounded-full shadow-md z-50 border border-slate-800">
+                    <!-- Elemen kamera dan sensor telah dihapus di sini -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Download -->
+        <button id="download-btn" onclick="downloadImage()" class="hidden w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-xl transition duration-200 shadow-lg">
+            Download High-Res
+        </button>
+    </div>
+
+    <script>
+        const uploadInput = document.getElementById('upload');
+        const uploadedImage = document.getElementById('uploaded-image');
+        const previewContainer = document.getElementById('preview-container');
+        const downloadBtn = document.getElementById('download-btn');
+        const captureArea = document.getElementById('capture-area');
+
+        uploadInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedImage.src = e.target.result;
+                    previewContainer.classList.remove('hidden');
+                    downloadBtn.classList.remove('hidden');
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function downloadImage() {
+            // Menggunakan skala 3 agar hasil download tajam/high-res
+            html2canvas(captureArea, { scale: 3, useCORS: true }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'iphone-dynamic-island-clean.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
