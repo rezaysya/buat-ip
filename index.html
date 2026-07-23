@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Island iPhone 11 (Custom Precision)</title>
+    <title>Dynamic Island iPhone 11 (Precision Update)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- html2canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        /* Menggunakan rasio presisi berdasarkan ukuran layar Anda (14.0731 / 6.5 = ~2.165 atau aspek 9:19.5) */
+        /* Menggunakan rasio presisi berdasarkan ukuran layar 6.5 x 14.0731 cm */
         .iphone-screen {
             aspect-ratio: 6.5 / 14.0731;
         }
@@ -19,7 +19,7 @@
 
     <div class="max-w-md w-full bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700">
         <h1 class="text-xl font-bold text-center mb-2">Dynamic Island iPhone 11</h1>
-        <p class="text-xs text-slate-400 text-center mb-6">Menggunakan ukuran presisi sesuai kustomisasi Anda.</p>
+        <p class="text-xs text-slate-400 text-center mb-6">Menggunakan ralat ukuran kustom presisi.</p>
 
         <!-- Input File -->
         <div class="mb-4">
@@ -27,7 +27,7 @@
             <input type="file" id="upload" accept="image/*" class="w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700 cursor-pointer">
         </div>
 
-        <!-- Preview Area dengan rasio presisi 6.5 x 14.0731 cm -->
+        <!-- Preview Area dengan rasio presisi -->
         <div id="preview-container" class="relative hidden w-full overflow-hidden rounded-[38px] shadow-2xl border-[5px] border-slate-900 bg-black iphone-screen mb-4 flex justify-center mx-auto max-w-[260px]">
             <div id="capture-area" class="relative w-full h-full">
                 <!-- Screenshot Result -->
@@ -35,12 +35,12 @@
                 
                 <!-- 
                   Dynamic Island dikonversi proporsional dari ukuran:
-                  - Lebar: 1.7918 cm -> persentase lebar layar (~27.5%)
-                  - Tinggi: 0.5631 cm -> persentase tinggi layar (~4%)
-                  - Jarak dari atas: 0.1065 cm -> persentase jarak atas (~0.75%)
+                  - Lebar: 1.994 cm -> ~30.68%
+                  - Tinggi: 0.6267 cm -> ~4.45%
+                  - Jarak dari atas: 0.0747 cm -> ~0.53%
                 -->
                 <div class="absolute left-1/2 transform -translate-x-1/2 bg-black rounded-full shadow-md z-50"
-                     style="top: 0.75%; width: 27.56%; height: 4%;"></div>
+                     style="top: 0.53%; width: 30.68%; height: 4.45%;"></div>
             </div>
         </div>
 
@@ -74,7 +74,7 @@
             // Menggunakan skala 3 agar hasil download tajam/high-res
             html2canvas(captureArea, { scale: 3, useCORS: true }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = 'iphone-11-dynamic-island-custom.png';
+                link.download = 'iphone-11-dynamic-island-precision.png';
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             });
