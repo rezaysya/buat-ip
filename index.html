@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Island iPhone 11 Proportional</title>
+    <title>Dynamic Island iPhone 11 (iOS 18)</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- html2canvas -->
@@ -13,7 +13,7 @@
 
     <div class="max-w-md w-full bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700">
         <h1 class="text-xl font-bold text-center mb-2">Dynamic Island iPhone 11</h1>
-        <p class="text-xs text-slate-400 text-center mb-6">Proporsi disesuaikan khusus untuk screenshot iPhone 11.</p>
+        <p class="text-xs text-slate-400 text-center mb-6">Proporsi disesuaikan pas menutupi notch iPhone 11 (iOS 18).</p>
 
         <!-- Input File -->
         <div class="mb-4">
@@ -21,14 +21,14 @@
             <input type="file" id="upload" accept="image/*" class="w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-indigo-600 file:text-white hover:file:bg-indigo-700 cursor-pointer">
         </div>
 
-        <!-- Preview Area (Disesuaikan ke aspek rasio & lengkungan iPhone 11) -->
+        <!-- Preview Area -->
         <div id="preview-container" class="relative hidden w-full overflow-hidden rounded-[42px] shadow-2xl border-[6px] border-slate-900 bg-black aspect-[9/19.5] mb-4 flex justify-center">
             <div id="capture-area" class="relative w-full h-full">
                 <!-- Screenshot Result -->
                 <img id="uploaded-image" class="w-full h-full object-cover" alt="Screenshot">
                 
-                <!-- Dynamic Island (Proporsi & Posisi Pas untuk Nutupi Notch iPhone 11) -->
-                <div class="absolute top-[11px] left-1/2 transform -translate-x-1/2 bg-black h-[28px] w-[105px] rounded-full shadow-lg z-50"></div>
+                <!-- Dynamic Island (Proporsi disesuaikan persis untuk menutupi notch iPhone 11) -->
+                <div class="absolute top-[14px] left-1/2 transform -translate-x-1/2 bg-black h-[27px] w-[112px] rounded-full shadow-md z-50"></div>
             </div>
         </div>
 
